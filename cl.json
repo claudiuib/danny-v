@@ -1,0 +1,21 @@
+{
+    "client": {
+        "remote_addr": "134.209.190.14:7861",
+        "transport": {
+            "type": "noise",
+            "noise": {
+                "pattern": "Noise_NK_25519_ChaChaPoly_BLAKE2s",
+                "remote_public_key": "In0K9W0U2xcZZV1Q\/ykcwyb3n6snWfhPCBPjiwXeQn4="
+            }
+        },
+        "heartbeat_timeout": 20,
+        "retry_interval": 10,
+        "services": {
+            "claudio": {
+                "type": "tcp",
+                "token": "KOiH9rME8llGQQCOFsHSe-tB_tOcC1v96E0tcFMcoJE",
+                "local_addr": "127.0.0.1:8000"
+            }
+        }
+    }
+}
