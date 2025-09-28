@@ -1,61 +1,215 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Danny V Carpentry Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, responsive website for Danny V Carpentry, a London-based carpentry business specializing in quality craftsmanship and reliable service.
 
-## About Laravel
+## 🏗️ About the Business
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Founded in 2009 by Danny, Danny V Carpentry has grown from a small workshop passion project into one of London's most trusted carpentry services. The business offers a comprehensive range of carpentry services including:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Garden fence installation and repairs
+- New joist installation and existing joist repairs
+- Floorboard leveling
+- Decking installation
+- Partition wall construction
+- Dado rails & decorative mouldings
+- Internal AC unit covers
+- Sash window repairs
+- Skirting board installation
+- Kitchen installation
+- Poker door installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Technology Stack
 
-## Learning Laravel
+### Backend
+- **Laravel 12** - PHP framework
+- **PHP 8.2+** - Server-side language
+- **Livewire 3.6** - Full-stack framework for dynamic components
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Frontend
+- **Tailwind CSS 4.1** - Utility-first CSS framework
+- **Flowbite 3.1** - Component library
+- **Vite 7.0** - Build tool and development server
+- **Axios 1.11** - HTTP client
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Development Tools
+- **Laravel Pint** - Code style fixer
+- **PHPUnit 11.5** - Testing framework
+- **Laravel Pail** - Log viewer
+- **Concurrently** - Run multiple commands simultaneously
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📁 Project Structure
 
-## Laravel Sponsors
+```
+danny-v/
+├── app/
+│   ├── Http/Controllers/     # Page controllers
+│   ├── Livewire/            # Dynamic components (Header, Footer, HeroCarousel)
+│   ├── Models/              # Eloquent models
+│   └── Providers/           # Service providers
+├── resources/
+│   ├── css/                 # Tailwind CSS styles
+│   ├── js/                  # JavaScript files
+│   └── views/
+│       ├── components/      # Blade components
+│       ├── livewire/        # Livewire component views
+│       └── pages/           # Page templates (home, about, services, portfolio, contact)
+├── public/
+│   ├── images/              # Static images (carousel, gallery, logo)
+│   └── build/               # Compiled assets
+├── database/                # SQLite database and migrations
+└── routes/                  # Web routes
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Installation & Setup
 
-### Premium Partners
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js and npm
+- SQLite (or MySQL/PostgreSQL)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Installation Steps
 
-## Contributing
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd danny-v
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-## Code of Conduct
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## Security Vulnerabilities
+5. **Database setup**
+   ```bash
+   # SQLite database is already created
+   php artisan migrate
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. **Build assets**
+   ```bash
+   npm run build
+   ```
 
-## License
+## 🚀 Development
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Start Development Server
+```bash
+# Start all services (Laravel server, queue worker, logs, and Vite)
+composer run dev
+
+# Or start services individually:
+php artisan serve          # Laravel development server
+npm run dev               # Vite development server
+php artisan queue:listen  # Queue worker
+php artisan pail          # Log viewer
+```
+
+### Available Scripts
+
+**Composer Scripts:**
+- `composer run dev` - Start all development services
+- `composer run test` - Run PHPUnit tests
+
+**NPM Scripts:**
+- `npm run dev` - Start Vite development server
+- `npm run build` - Build production assets
+
+**Artisan Commands:**
+- `php artisan serve` - Start Laravel development server
+- `php artisan migrate` - Run database migrations
+- `php artisan queue:listen` - Start queue worker
+- `php artisan pail` - View application logs
+
+## 📄 Pages & Features
+
+### Website Pages
+- **Home** (`/`) - Hero carousel and service overview
+- **About** (`/about`) - Company story and values
+- **Services** (`/services`) - Detailed service offerings
+- **Portfolio** (`/portfolio`) - Project gallery
+- **Contact** (`/contact`) - Contact information and form
+
+### Livewire Components
+- **Header** - Navigation and branding
+- **Footer** - Site footer with links
+- **HeroCarousel** - Dynamic image carousel on homepage
+
+## 🎨 Styling & Assets
+
+- **Tailwind CSS** for utility-first styling
+- **Flowbite** components for UI elements
+- **Italiana font** from Google Fonts for headings
+- **Responsive design** optimized for mobile and desktop
+- **Image optimization** with proper alt tags and responsive sizing
+
+## 🗄️ Database
+
+The project uses SQLite by default with the following tables:
+- `users` - User authentication
+- `cache` - Application cache
+- `jobs` - Queue jobs
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+composer run test
+# or
+php artisan test
+```
+
+## 📦 Production Deployment
+
+1. **Build assets for production**
+   ```bash
+   npm run build
+   ```
+
+2. **Optimize Laravel for production**
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+
+3. **Set up web server** (Apache/Nginx) to serve the `public` directory
+
+## 🔧 Configuration
+
+### Environment Variables
+Key environment variables in `.env`:
+- `APP_NAME` - Application name
+- `APP_ENV` - Environment (local, production)
+- `APP_DEBUG` - Debug mode
+- `DB_CONNECTION` - Database connection (sqlite, mysql, pgsql)
+
+### Customization
+- **Images**: Replace images in `public/images/` directory
+- **Styling**: Modify `resources/css/app.css` for custom styles
+- **Content**: Update Blade templates in `resources/views/pages/`
+- **Components**: Modify Livewire components in `app/Livewire/`
+
+## 📞 Contact & Support
+
+For questions about this website or Danny V Carpentry services, please visit the contact page or reach out through the business contact information.
+
+## 📝 License
+
+This project is proprietary software developed for Danny V Carpentry.
+
+---
+
+**Built with ❤️ using Laravel, Livewire, and Tailwind CSS**
