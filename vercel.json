@@ -1,17 +1,28 @@
 {
     "version": 2,
-      "framework": null,
+    "framework": null,
+    "buildCommand": "npm run build",
+    "outputDirectory": "public",
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.4"}
     },
-    "routes": [{
-        "src": "/(.*)",
-        "dest": "/api/index.php"
-    }],
+    "routes": [
+        {
+            "src": "/build/(.*)",
+            "dest": "/build/$1",
+            "headers": {
+                "Cache-Control": "public, max-age=31536000, immutable"
+            }
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ],
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://yourprojectdomain.com",
+        "APP_URL": "https://danny-v.vercel.app",
         "APP_KEY":"base64:0l4AboGI7C6MnCNlq22qGnJxoO95BOnkSyYLz5bWvAs=",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
