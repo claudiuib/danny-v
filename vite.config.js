@@ -4,7 +4,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
     build: {
-        outDir: 'public', // <--- tells Vercel where files will go
+        outDir: 'public/build', // <-- correct folder for Laravel
+        manifest: true,          // <-- ensure manifest.json is generated
+        rollupOptions: {
+            input: 'resources/js/app.js', // entry point
+        },
     },
     plugins: [
         laravel({
