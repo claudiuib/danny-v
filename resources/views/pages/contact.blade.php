@@ -1,7 +1,7 @@
 <x-layouts.app>
     <!-- Hero Section -->
     <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
-        <img src="{{ asset('images/gallery/sevicesthubmail.png') }}" alt="Contact" class="absolute inset-0 w-full h-full object-cover">
+        <img src="{{ asset('images/gallery/contactthumbmail.jpg') }}" alt="Contact" class="absolute inset-0 w-full h-full object-cover">
         
         <!-- Text Overlay -->
         <div class="absolute inset-0 flex items-center justify-center">

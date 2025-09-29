@@ -1,7 +1,7 @@
 <x-layouts.app>
     <!-- Hero Section -->
     <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
-        <img src="{{ asset('images/gallery/sevicesthubmail.png') }}" alt="Portfolio" class="absolute inset-0 w-full h-full object-cover">
+        <img src="{{ asset('images/gallery/portofolio.jpg') }}" alt="Portfolio" class="absolute inset-0 w-full h-full object-cover">
         
         <!-- Text and Button Overlay -->
         <div class="absolute inset-0 flex items-center justify-center">
@@ -81,7 +81,7 @@
             <!-- Project 5 - Staircase Design -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
                 <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/kitchen5.png') }}" alt="Staircase Design" class="max-h-full max-w-full object-contain">
+                    <img src="{{ asset('images/gallery/stairs.png') }}" alt="Staircase Design" class="max-h-full max-w-full object-contain">
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Staircase Design</h3>
