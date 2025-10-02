@@ -5,7 +5,7 @@
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="images/carousel/kitchen.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="images/carousel/kitchen.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             <!-- Hero text and button overlay -->
             <div class="absolute inset-0 flex items-center justify-center z-20">
                 <div class="text-center text-white">
@@ -23,7 +23,7 @@
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="images/carousel/kitchen2.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="images/carousel/kitchen2.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             <!-- Hero text and button overlay -->
             <div class="absolute inset-0 flex items-center justify-center z-20">
                 <div class="text-center text-white">
@@ -41,7 +41,7 @@
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="images/carousel/kitchen3.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="images/carousel/kitchen3.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             <!-- Hero text and button overlay -->
             <div class="absolute inset-0 flex items-center justify-center z-20">
                 <div class="text-center text-white">
@@ -51,7 +51,7 @@
                     <p class="text-lg md:text-xl mb-8 drop-shadow-md">
                         Transform your space with timeless woodwork.
                     </p>
-                    <button class="bg-white hover:bg-orange-700 text-black font-bold py-3 px-8 rounded-lg ">
+                    <button class="bg-white hover:bg-orange-700 text-black font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                         Get Quote
                     </button>
                 </div>
