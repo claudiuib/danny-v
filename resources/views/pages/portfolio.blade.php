@@ -59,7 +59,7 @@
             <!-- Project 3 - Outdoor Space -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
                 <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/outdoor.jpg') }}" alt="Outdoor Living" class="max-h-full max-w-full object-contain">
+                    <img src="{{ asset('images/gallery/decking.jpg') }}" alt="Outdoor Living" class="max-h-full max-w-full object-contain">
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Outdoor Living</h3>
@@ -92,7 +92,7 @@
             <!-- Project 6 - Outdoor Deck -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
                 <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/outdoor.jpg') }}" alt="Outdoor Deck" class="max-h-full max-w-full object-contain">
+                    <img src="{{ asset('images/gallery/outdoorliving.jpg') }}" alt="Outdoor Deck" class="max-h-full max-w-full object-contain">
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Outdoor Deck</h3>
