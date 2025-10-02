@@ -6,16 +6,10 @@
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <img src="images/carousel/kitchen.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            <!-- Hero text and button overlay -->
+            <!-- Button overlay -->
             <div class="absolute inset-0 flex items-center justify-center z-20">
-                <div class="text-center text-white">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-                        Home Renovations
-                    </h1>
-                    <p class="text-lg md:text-xl mb-8 drop-shadow-md">
-                        Transform your space with timeless woodwork.
-                    </p>
-                    <button class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                <div class="text-center">
+                    <button class="bg-white hover:bg-orange-700 text-black font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                         Get Quote
                     </button>
                 </div>
@@ -24,15 +18,9 @@
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
             <img src="images/carousel/kitchen2.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            <!-- Hero text and button overlay -->
+            <!-- Button overlay -->
             <div class="absolute inset-0 flex items-center justify-center z-20">
-                <div class="text-center text-white">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-                        Home Renovations
-                    </h1>
-                    <p class="text-lg md:text-xl mb-8 drop-shadow-md">
-                        Transform your space with timeless woodwork.
-                    </p>
+                <div class="text-center">
                     <button class="bg-white hover:bg-orange-700 text-black font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                         Get Quote
                     </button>
@@ -42,15 +30,9 @@
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <img src="images/carousel/kitchen3.jpg" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            <!-- Hero text and button overlay -->
+            <!-- Button overlay -->
             <div class="absolute inset-0 flex items-center justify-center z-20">
-                <div class="text-center text-white">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-                        Home Renovations
-                    </h1>
-                    <p class="text-lg md:text-xl mb-8 drop-shadow-md">
-                        Transform your space with timeless woodwork.
-                    </p>
+                <div class="text-center">
                     <button class="bg-white hover:bg-orange-700 text-black font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
                         Get Quote
                     </button>

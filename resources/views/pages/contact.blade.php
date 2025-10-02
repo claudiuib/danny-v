@@ -6,10 +6,10 @@
         <!-- Text Overlay -->
         <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center text-white">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg" style="font-family: 'Italiana', serif;">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg text-white" style="font-family: 'Italiana', serif; text-shadow: 2px 2px 0 #4b5563, -2px -2px 0 #4b5563, 2px -2px 0 #4b5563, -2px 2px 0 #4b5563;">
                     Contact
                 </h1>
-                <p class="text-lg md:text-xl mb-8 drop-shadow-md max-w-4xl mx-auto px-4">
+                <p class="text-lg md:text-xl mb-8 drop-shadow-md max-w-4xl mx-auto px-4 text-white" style="text-shadow: 1px 1px 0 #4b5563, -1px -1px 0 #4b5563, 1px -1px 0 #4b5563, -1px 1px 0 #4b5563;">
                     From custom furniture to complete home renovations, we bring decades of craftsmanship and attention to detail to every project.
                 </p>
             </div>
