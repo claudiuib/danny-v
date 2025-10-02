@@ -1,20 +1,21 @@
 <x-layouts.app>
     <!-- Hero Section -->
-    <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
-        <img src="{{ asset('images/gallery/contactthumbmail.jpg') }}" alt="Contact" class="absolute inset-0 w-full h-full object-cover">
-        
-        <!-- Text Overlay -->
-        <div class="absolute inset-0 flex items-center justify-center">
-            <div class="text-center text-white">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg text-white" style="font-family: 'Italiana', serif; text-shadow: 2px 2px 0 #4b5563, -2px -2px 0 #4b5563, 2px -2px 0 #4b5563, -2px 2px 0 #4b5563;">
-                    Contact
-                </h1>
-                <p class="text-lg md:text-xl mb-8 drop-shadow-md max-w-4xl mx-auto px-4 text-white" style="text-shadow: 1px 1px 0 #4b5563, -1px -1px 0 #4b5563, 1px -1px 0 #4b5563, -1px 1px 0 #4b5563;">
-                    From custom furniture to complete home renovations, we bring decades of craftsmanship and attention to detail to every project.
-                </p>
-            </div>
+ <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
+    <img src="{{ asset('images/gallery/contactthumbmail.jpg') }}" alt="Contact" class="absolute inset-0 w-full h-full object-cover">
+    
+    <!-- Text Overlay -->
+    <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white" style="font-family: 'Italiana', serif;">
+                Contact
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto px-4 text-white">
+                From custom furniture to complete home renovations, we bring decades of craftsmanship and attention to detail to every project.
+            </p>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Contact Information Cards -->
     <section class="py-16 bg-white">
