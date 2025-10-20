@@ -1,6 +1,6 @@
 # Danny V Carpentry Website
 
-A modern, responsive website for Danny V Carpentry, a London-based carpentry business specializing in quality craftsmanship and reliable service.
+A modern, responsive website for Danny V Carpentry, a London-based carpentry business specializing in quality craftsmanship and reliable service. Features a comprehensive admin panel for dynamic content management.
 
 ## 🏗️ About the Business
 
@@ -24,12 +24,15 @@ Founded in 2009 by Danny, Danny V Carpentry has grown from a small workshop pass
 - **Laravel 12** - PHP framework
 - **PHP 8.2+** - Server-side language
 - **Livewire 3.6** - Full-stack framework for dynamic components
+- **Backpack for Laravel** - Admin panel and CRUD operations
+- **MySQL** - Database management
 
 ### Frontend
 - **Tailwind CSS 4.1** - Utility-first CSS framework
 - **Flowbite 3.1** - Component library
 - **Vite 7.0** - Build tool and development server
 - **Axios 1.11** - HTTP client
+- **Chart.js** - Analytics and visitor statistics
 
 ### Development Tools
 - **Laravel Pint** - Code style fixer
@@ -42,22 +45,30 @@ Founded in 2009 by Danny, Danny V Carpentry has grown from a small workshop pass
 ```
 danny-v/
 ├── app/
-│   ├── Http/Controllers/     # Page controllers
+│   ├── Http/Controllers/     # Page controllers and Admin CRUD controllers
+│   ├── Http/Middleware/       # Custom middleware (TrackVisitors, CheckIfAdmin)
+│   ├── Http/Requests/         # Form validation requests
 │   ├── Livewire/            # Dynamic components (Header, Footer, HeroCarousel)
-│   ├── Models/              # Eloquent models
+│   ├── Models/              # Eloquent models (User, Portfolio, Service, etc.)
 │   └── Providers/           # Service providers
 ├── resources/
 │   ├── css/                 # Tailwind CSS styles
 │   ├── js/                  # JavaScript files
 │   └── views/
+│       ├── admin/           # Admin panel custom views
 │       ├── components/      # Blade components
 │       ├── livewire/        # Livewire component views
-│       └── pages/           # Page templates (home, about, services, portfolio, contact)
+│       ├── pages/           # Page templates (home, about, services, portfolio, contact)
+│       └── vendor/          # Backpack admin views
 ├── public/
 │   ├── images/              # Static images (carousel, gallery, logo)
+│   ├── storage/             # Uploaded files and images
 │   └── build/               # Compiled assets
-├── database/                # SQLite database and migrations
-└── routes/                  # Web routes
+├── database/                # MySQL database and migrations
+├── routes/
+│   ├── web.php              # Public routes
+│   └── backpack/            # Admin panel routes
+└── config/backpack/         # Backpack configuration
 ```
 
 ## 🛠️ Installation & Setup
@@ -66,7 +77,8 @@ danny-v/
 - PHP 8.2 or higher
 - Composer
 - Node.js and npm
-- SQLite (or MySQL/PostgreSQL)
+- MySQL (recommended) or SQLite
+- Backpack for Laravel
 
 ### Installation Steps
 
@@ -94,8 +106,9 @@ danny-v/
 
 5. **Database setup**
    ```bash
-   # SQLite database is already created
+   # Configure MySQL in .env file
    php artisan migrate
+   php artisan storage:link
    ```
 
 6. **Build assets**
@@ -147,6 +160,25 @@ php artisan pail          # Log viewer
 - **Footer** - Site footer with links
 - **HeroCarousel** - Dynamic image carousel on homepage
 
+## 🔧 Admin Panel Features
+
+### CRUD Operations
+- **Portfolio Management** - Add, edit, and organize portfolio items with images
+- **Services Management** - Manage service offerings with features and descriptions
+- **Contact Information** - Update contact details, phone, email, and location
+- **Main Page Content** - Manage homepage content and services list
+- **About Page Content** - Manage company story and history
+- **User Management** - Admin user controls with password management
+- **Visitor Analytics** - Website statistics, charts, and visitor tracking
+
+### Admin Panel Features
+- **Custom Dashboard** - Comprehensive overview with statistics and quick actions
+- **Image Upload** - High-quality image management for portfolio and services
+- **Content Management** - Dynamic content for all pages
+- **Visitor Tracking** - Privacy-focused analytics with location data
+- **Security Features** - User protection and password requirements
+- **Responsive Design** - Mobile-friendly admin interface
+
 ## 🎨 Styling & Assets
 
 - **Tailwind CSS** for utility-first styling
@@ -157,10 +189,26 @@ php artisan pail          # Log viewer
 
 ## 🗄️ Database
 
-The project uses SQLite by default with the following tables:
-- `users` - User authentication
+The project uses MySQL with the following tables:
+
+### Core Tables
+- `users` - User authentication and admin accounts
 - `cache` - Application cache
 - `jobs` - Queue jobs
+
+### Content Management Tables
+- `portfolios` - Portfolio items with images and categories
+- `services` - Service offerings with features and descriptions
+- `contact_infos` - Contact information and location details
+- `main_page_contents` - Homepage content and services list
+- `about_page_contents` - About page content and company story
+- `visitors` - Visitor tracking and analytics data
+
+### Database Features
+- **Automatic Sort Ordering** - Content items are automatically ordered
+- **Image Management** - File uploads stored in `public/storage`
+- **Visitor Tracking** - Privacy-focused analytics without IP storage
+- **Content Status** - Active/inactive toggles for all content
 
 ## 🧪 Testing
 
@@ -199,8 +247,15 @@ Key environment variables in `.env`:
 ### Customization
 - **Images**: Replace images in `public/images/` directory
 - **Styling**: Modify `resources/css/app.css` for custom styles
-- **Content**: Update Blade templates in `resources/views/pages/`
+- **Content**: Update content through admin panel at `/admin`
+- **Admin Panel**: Customize admin views in `resources/views/admin/`
 - **Components**: Modify Livewire components in `app/Livewire/`
+
+### Admin Panel Access
+- **URL**: `http://your-domain.com/admin`
+- **Features**: Complete content management system
+- **Security**: User authentication and role-based access
+- **Dashboard**: Real-time statistics and quick actions
 
 ## 📞 Contact & Support
 
@@ -212,4 +267,14 @@ This project is proprietary software developed for Danny V Carpentry.
 
 ---
 
-**Built with ❤️ using Laravel, Livewire, and Tailwind CSS**
+**Built with ❤️ using Laravel, Livewire, Tailwind CSS, and Backpack for Laravel**
+
+## 🚀 Key Features
+
+- ✅ **Dynamic Content Management** - All content manageable through admin panel
+- ✅ **Image Upload System** - High-quality image management for portfolio and services
+- ✅ **Visitor Analytics** - Privacy-focused visitor tracking with charts
+- ✅ **Responsive Design** - Mobile-friendly website and admin interface
+- ✅ **Security Features** - User authentication and content protection
+- ✅ **SEO Optimized** - Clean URLs and meta tags
+- ✅ **Performance Optimized** - Fast loading with efficient database queries
