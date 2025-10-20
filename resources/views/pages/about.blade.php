@@ -28,18 +28,17 @@
                     OUR STORY
                 </h2>
 
-                <p class="text-gray-600 mt-6 text-justify">
-                    Founded in 2009 by Danny , Danny V Carpentry began as a passion project in a small workshop in London.
-                    What started as custom furniture making for friends and family has grown into one of London's most trusted carpentry services.</p>
-                <p class="text-gray-600 mt-1 text-justify">
-                    Our journey has been built on a foundation of traditional craftsmanship combined with modern techniques.
-                    We believe that every piece of wood has a story to tell,
-                    and our role is to help that story unfold through skilled hands and creative vision.
-                </p>
-                  <p class="text-gray-600 mt-1 text-justify">
-                    Today, we serve clients across London with a team of experienced craftsmen who share our commitment to quality, reliability, and exceptional service. 
-                    From small repairs to complete home renovations, we approach every project with the same dedication to excellence.
-                </p>
+                @if($aboutContents && $aboutContents->count() > 0)
+                    @foreach($aboutContents as $content)
+                        <div class="text-gray-600 mt-6 text-justify">
+                            {!! nl2br(e($content->content)) !!}
+                        </div>
+                    @endforeach
+                @else
+                    <div class="text-gray-600 mt-6 text-justify">
+                        <p>No content available. Please add content through the admin panel.</p>
+                    </div>
+                @endif
 
            
 

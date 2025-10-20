@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Facades\Storage;
+@endphp
+
 <x-layouts.app>
     <!-- Hero Section -->
     <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
@@ -32,75 +36,31 @@
 <!-- Portfolio Grid -->
 <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Project 1 - Interior with Green Walls -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
-                <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/greenwall.jpg') }}" alt="Interior Renovation" class="max-h-full max-w-full object-contain">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Interior Renovation</h3>
-                    <p class="text-gray-600">Modern interior design with custom molding and elegant finishes.</p>
-                </div>
+        @if($portfolios->count() > 0)
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($portfolios as $portfolio)
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
+                        <div class="h-96 flex items-center justify-center bg-gray-100">
+                            <img src="{{ Storage::url($portfolio->image_path) }}" alt="{{ $portfolio->title }}" class="max-h-full max-w-full object-contain">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">{{ $portfolio->title }}</h3>
+                            <p class="text-gray-600">{{ $portfolio->description }}</p>
+                            @if($portfolio->category)
+                                <span class="inline-block mt-2 px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full">
+                                    {{ ucfirst($portfolio->category) }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-            <!-- Project 2 - Hallway with Built-in Storage -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
-                <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/wallrenovation.png') }}" alt="Built-in Storage" class="max-h-full max-w-full object-contain">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Built-in Storage</h3>
-                    <p class="text-gray-600">Custom built-in wardrobes with intricate tile flooring design.</p>
-                </div>
+        @else
+            <div class="text-center py-16">
+                <h3 class="text-2xl font-bold text-gray-600 mb-4">No Portfolio Items Yet</h3>
+                <p class="text-gray-500">Portfolio items will appear here once they are added through the admin panel.</p>
             </div>
-
-            <!-- Project 3 - Outdoor Space -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
-                <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/decking.jpg') }}" alt="Outdoor Living" class="max-h-full max-w-full object-contain">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Outdoor Living</h3>
-                    <p class="text-gray-600">Beautiful outdoor spaces with custom decking and landscaping.</p>
-                </div>
-            </div>
-
-            <!-- Project 4 - Modern Kitchen -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
-                <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/kitchen4.png') }}" alt="Modern Kitchen" class="max-h-full max-w-full object-contain">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Modern Kitchen</h3>
-                    <p class="text-gray-600">Contemporary kitchen design with custom cabinets and modern appliances.</p>
-                </div>
-            </div>
-
-            <!-- Project 5 - Staircase Design -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
-                <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/stairs.png') }}" alt="Staircase Design" class="max-h-full max-w-full object-contain">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Staircase Design</h3>
-                    <p class="text-gray-600">Custom staircase with elegant carpeting and integrated lighting.</p>
-                </div>
-            </div>
-
-            <!-- Project 6 - Outdoor Deck -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 max-w-xs mx-auto">
-                <div class="h-96 flex items-center justify-center bg-gray-100">
-                    <img src="{{ asset('images/gallery/outdoorliving.jpg') }}" alt="Outdoor Deck" class="max-h-full max-w-full object-contain">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2" style="font-family: 'Italiana', serif;">Outdoor Deck</h3>
-                    <p class="text-gray-600">Composite decking with raised planters and modern outdoor living features.</p>
-                </div>
-            </div>
-
-        </div>
+        @endif
     </div>
 </section>
 

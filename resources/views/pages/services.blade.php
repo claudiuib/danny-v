@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Facades\Storage;
+@endphp
+
 <x-layouts.app>
     <!-- Hero Section -->
     <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
@@ -16,125 +20,58 @@
         </div>
     </section>
 
-    <!-- Kitchen Cabinets Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl font-bold mb-6" style="font-family: 'Italiana', serif;">Kitchen Cabinets</h2>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        Transform your kitchen with custom-built cabinets that maximize storage and enhance your home's aesthetic appeal. We handle everything from design to installation, ensuring a perfect fit for your space.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Custom cabinet design</span>
+    @if($services->count() > 0)
+        @foreach($services as $index => $service)
+            <section class="py-16 {{ $index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }}">
+                <div class="container mx-auto px-4">
+                    <div class="flex flex-col lg:flex-row {{ $index % 2 == 1 ? 'lg:flex-row-reverse' : '' }} gap-12 items-center">
+                        <div class="lg:w-1/2">
+                            <h2 class="text-4xl font-bold mb-6" style="font-family: 'Italiana', serif;">{{ $service->title }}</h2>
+                            <p class="text-gray-600 mb-8 text-lg">
+                                {{ $service->description }}
+                            </p>
+                            
+                            @if($service->features_array && count($service->features_array) > 0)
+                                <div class="grid grid-cols-2 gap-4 mb-8">
+                                    @foreach($service->features_array as $feature)
+                                        <div class="flex items-center">
+                                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
+                                            <span class="text-gray-700">{{ $feature }}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            
+                            <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                                Contact Us
+                            </button>
                         </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Kitchen islands</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Cabinet refacing</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Pantry solutions</span>
-                        </div>
-                    </div>
-                    
-                    <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-                        Contact Us
-                    </button>
-                </div>
-                <div class="lg:w-1/2 flex justify-center">
-                    <img src="{{ asset('images/gallery/kitchen4.png') }}" alt="Kitchen Cabinets" class="h-80 object-contain shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Home Renovations Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row-reverse gap-12 items-center">
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl font-bold mb-6" style="font-family: 'Italiana', serif;">Home Renovations</h2>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        Complete home renovation services including framing, flooring, trim work, and structural modifications. We manage every aspect of your project to ensure quality results and minimal disruption.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Room additions</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Bathroom remodels</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Basement finishing</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Attic conversions</span>
+                        <div class="lg:w-1/2 flex justify-center">
+                            @if($service->image_path)
+                                <img src="{{ Storage::url($service->image_path) }}" alt="{{ $service->title }}" class="h-80 object-contain shadow-lg">
+                            @else
+                                @if($index == 0)
+                                    <img src="{{ asset('images/gallery/kitchen4.png') }}" alt="{{ $service->title }}" class="h-80 object-contain shadow-lg">
+                                @elseif($index == 1)
+                                    <img src="{{ asset('images/gallery/wallrenovation.png') }}" alt="{{ $service->title }}" class="h-80 object-contain shadow-lg">
+                                @else
+                                    <img src="{{ asset('images/gallery/windowsrepair.png') }}" alt="{{ $service->title }}" class="h-80 object-contain shadow-lg">
+                                @endif
+                            @endif
                         </div>
                     </div>
-                    
-                    <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-                        Contact Us
-                    </button>
                 </div>
-                <div class="lg:w-1/2 flex justify-center">
-                    <img src="{{ asset('images/gallery/wallrenovation.png') }}" alt="Home Renovations" class="h-80 object-contain shadow-lg">
-                </div>
+            </section>
+        @endforeach
+    @else
+        <!-- Default fallback if no services -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="text-2xl font-bold text-gray-600 mb-4">Our Services</h3>
+                <p class="text-gray-500">Services will appear here once they are added through the admin panel.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Trim & Molding Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl font-bold mb-6" style="font-family: 'Italiana', serif;">Trim & Molding</h2>
-                    <p class="text-gray-600 mb-8 text-lg">
-                        Add elegance and character to your home with custom trim work, crown molding, and architectural details. Our detailed craftsmanship enhances both traditional and contemporary spaces.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Crown molding</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Window casings</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Baseboards</span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>
-                            <span class="text-gray-700">Wainscoting</span>
-                        </div>
-                    </div>
-                    
-                    <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-                        Contact Us
-                    </button>
-                </div>
-                <div class="lg:w-1/2 flex justify-center">
-                    <img src="{{ asset('images/gallery/windowsrepair.png') }}" alt="Trim & Molding" class="h-80 object-contain shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <!-- Client Testimonials Section -->
     <section class="py-16 bg-gray-50">
