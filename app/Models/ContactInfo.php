@@ -14,7 +14,10 @@ class ContactInfo extends Model
         'email',
         'location',
         'description',
-        'is_active'
+        'is_active',
+        'bullet_1',
+        'bullet_2',
+        'bullet_3',
     ];
 
     protected $casts = [

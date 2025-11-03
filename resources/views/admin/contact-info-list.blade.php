@@ -9,12 +9,12 @@
 @endphp
 
 @section('header')
-    <section class="header-operation animated fadeInDown">
-        <h1 class="h3 mb-0">
-            Contact Information
-        </h1>
-        <p class="mb-0">Manage your contact details</p>
-    </section>
+<section class="header-operation animated fadeInDown">
+    <h1 class="h3 mb-0">
+        Contact Information
+    </h1>
+    <p class="mb-0">Manage your contact details</p>
+</section>
 @endsection
 
 @section('content')
@@ -55,6 +55,21 @@
                                 <div class="col-12">
                                     <h6><strong>Description:</strong></h6>
                                     <p class="mb-3">{{ $entry->description }}</p>
+                                </div>
+                            </div>
+
+                            {{-- Dynamic Bullets --}}
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <h6><strong>Key Points:</strong></h6>
+                                    @foreach(['bullet_1', 'bullet_2', 'bullet_3'] as $bullet)
+                                        @if($entry->$bullet)
+                                            <div class="mb-2">
+                                                <span class="badge badge-warning mr-2">•</span>
+                                                {{ $entry->$bullet }}
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                             

@@ -1,21 +1,20 @@
 <x-layouts.app>
     <!-- Hero Section -->
- <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
-    <img src="{{ asset('images/gallery/contactthumbmail.jpg') }}" alt="Contact" class="absolute inset-0 w-full h-full object-cover">
-    
-    <!-- Text Overlay -->
-    <div class="absolute inset-0 flex items-center justify-center">
-        <div class="text-center text-white">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white" style="font-family: 'Italiana', serif;">
-                Contact
-            </h1>
-            <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto px-4 text-white">
-                From custom furniture to complete home renovations, we bring decades of craftsmanship and attention to detail to every project.
-            </p>
+    <section class="relative h-64 md:h-80 overflow-hidden bg-gray-300">
+        <img src="{{ asset('images/gallery/contactthumbmail.jpg') }}" alt="Contact" class="absolute inset-0 w-full h-full object-cover">
+        
+        <!-- Text Overlay -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white" style="font-family: 'Italiana', serif;">
+                    Contact
+                </h1>
+                <p class="text-lg md:text-xl mb-8 max-w-4xl mx-auto px-4 text-white">
+                    From custom furniture to complete home renovations, we bring decades of craftsmanship and attention to detail to every project.
+                </p>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Contact Information Cards -->
     <section class="py-16 bg-white">
@@ -86,19 +85,18 @@
                         </p>
                     @endif
                     
+                    {{-- Dynamic Bullet Points --}}
                     <div class="space-y-6">
-                        <div class="flex items-start">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-4 mt-3 flex-shrink-0"></span>
-                            <p class="text-gray-700">We offer complimentary project consultations to discuss your vision and provide expert recommendations.</p>
-                        </div>
-                        <div class="flex items-start">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-4 mt-3 flex-shrink-0"></span>
-                            <p class="text-gray-700">Fully licensed contractors with comprehensive insurance coverage for your peace of mind.</p>
-                        </div>
-                        <div class="flex items-start">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full mr-4 mt-3 flex-shrink-0"></span>
-                            <p class="text-gray-700">We stand behind our work with comprehensive warranties on all craftsmanship and materials.</p>
-                        </div>
+                        @if($contactInfo)
+                            @foreach(['bullet_1', 'bullet_2', 'bullet_3'] as $bullet)
+                                @if($contactInfo->$bullet)
+                                    <div class="flex items-start">
+                                        <span class="w-2 h-2 bg-orange-600 rounded-full mr-4 mt-3 flex-shrink-0"></span>
+                                        <p class="text-gray-700">{!! nl2br(e($contactInfo->$bullet)) !!}</p>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
