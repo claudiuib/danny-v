@@ -10,6 +10,7 @@ class MainPageContent extends Model
     use CrudTrait;
     
     protected $fillable = [
+        'section_name',
         'content',
         'services',
         'sort_order',

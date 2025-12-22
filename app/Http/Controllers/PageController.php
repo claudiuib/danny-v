@@ -7,10 +7,17 @@ use App\Models\Portfolio;
 use App\Models\ContactInfo;
 use App\Models\Service;
 use App\Models\AboutPageContent;
+use App\Models\MainPageContent;
 
 class PageController extends Controller
 {
-  public function home() { return view('pages.home'); }
+  public function home() { 
+        $mainPageContent = MainPageContent::where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->orderBy('created_at', 'desc')
+            ->first();
+        return view('pages.home', compact('mainPageContent')); 
+    }
     public function about() { 
         $aboutContents = AboutPageContent::where('is_active', true)
             ->orderBy('sort_order', 'asc')

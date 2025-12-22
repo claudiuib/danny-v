@@ -16,6 +16,7 @@ class MainPageContentCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
@@ -38,8 +39,12 @@ class MainPageContentCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        // Remove delete buttons
-        CRUD::removeButton('delete');
+        CRUD::column('id');
+        CRUD::column('section_name')->label('Section Heading');
+        CRUD::column('content')->type('text')->limit(100)->label('Content Preview');
+        CRUD::column('is_active')->type('boolean');
+        CRUD::column('sort_order');
+        CRUD::column('created_at')->type('datetime');
         
         // Use custom list view with edit buttons like Services
         CRUD::setListView('admin.main-page-content-list');
@@ -55,16 +60,31 @@ class MainPageContentCrudController extends CrudController
     {
         CRUD::setValidation(MainPageContentRequest::class);
         
+        CRUD::field('section_name')
+            ->type('text')
+            ->label('Section Heading')
+            ->validationRules('required|string|max:255')
+            ->hint('e.g., "WHAT WE DO"')
+            ->default('WHAT WE DO');
+        
         CRUD::field('content')
             ->type('textarea')
             ->label('Main Content')
+            ->attributes([
+                'rows' => 10,
+                'style' => 'font-family: monospace;'
+            ])
             ->validationRules('required|string')
-            ->hint('The main description text for this section');
+            ->hint('Enter the main description text. You can use line breaks for formatting.');
             
         CRUD::field('services')
             ->type('textarea')
             ->label('Services List')
-            ->hint('Enter services one per line (optional)')
+            ->attributes([
+                'rows' => 15,
+                'style' => 'font-family: monospace;'
+            ])
+            ->hint('Enter services one per line. Each line will be displayed as a bullet point.')
             ->validationRules('nullable|string');
             
         CRUD::field('sort_order')
@@ -90,5 +110,28 @@ class MainPageContentCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $this->crud->hasAccessOrFail('delete');
+
+        // get entry ID from Request (makes sure its the last ID for nested resources)
+        $id = $this->crud->getCurrentEntryId() ?? $id;
+
+        // Get the entry and delete it
+        $entry = $this->crud->getEntry($id);
+        $entry->delete();
+        
+        // Show success message and redirect to list page
+        session()->flash('success', trans('backpack::crud.delete_success'));
+        
+        return redirect($this->crud->route);
     }
 }

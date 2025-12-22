@@ -63,7 +63,11 @@ class PortfolioCrudController extends CrudController
         
         CRUD::field('title')->validationRules('required|min:3|max:255');
         CRUD::field('description')->type('textarea')->validationRules('required|min:10');
-        CRUD::field('image_path')->type('upload')->disk('public')->validationRules('required|image|max:2048');
+        CRUD::field('image_path')
+            ->type('upload')
+            ->withFiles()
+            ->disk('public')
+            ->validationRules('required|image|max:2048');
         CRUD::field('category')->type('select_from_array')->options([
             'interior' => 'Interior Design',
             'renovation' => 'Renovation',
@@ -85,5 +89,28 @@ class PortfolioCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $this->crud->hasAccessOrFail('delete');
+
+        // get entry ID from Request (makes sure its the last ID for nested resources)
+        $id = $this->crud->getCurrentEntryId() ?? $id;
+
+        // Get the entry and delete it
+        $entry = $this->crud->getEntry($id);
+        $entry->delete();
+        
+        // Show success message and redirect to list page
+        session()->flash('success', trans('backpack::crud.delete_success'));
+        
+        return redirect($this->crud->route);
     }
 }

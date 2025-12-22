@@ -71,9 +71,13 @@
                                             <a href="{{ url($crud->route.'/'.$entry->getKey().'/edit') }}" class="btn btn-sm btn-primary">
                                                 <i class="la la-edit"></i>
                                             </a>
-                                            <a href="{{ url($crud->route.'/'.$entry->getKey().'/delete') }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this portfolio item?')">
-                                                <i class="la la-trash"></i>
-                                            </a>
+                                            <form method="POST" action="{{ url($crud->route.'/'.$entry->getKey()) }}" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to delete this portfolio item?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="la la-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

@@ -37,6 +37,9 @@
                             @foreach($crud->getEntries() as $entry)
                                 <tr>
                                     <td style="width: 60%;">
+                                        @if($entry->section_name)
+                                            <strong>{{ $entry->section_name }}</strong><br>
+                                        @endif
                                         <strong>Content:</strong>
                                         <p class="mb-2">{{ Str::limit($entry->content, 150) }}</p>
                                         
@@ -67,8 +70,15 @@
                                     <td style="width: 20%;">
                                         <div class="btn-group" role="group">
                                             <a href="{{ url($crud->route.'/'.$entry->getKey().'/edit') }}" class="btn btn-sm btn-primary">
-                                                <i class="la la-edit"></i> Edit
+                                                <i class="la la-edit"></i>
                                             </a>
+                                            <form method="POST" action="{{ url($crud->route.'/'.$entry->getKey()) }}" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to delete this content?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="la la-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

@@ -64,7 +64,11 @@ class ServiceCrudController extends CrudController
         
         CRUD::field('title')->validationRules('required|min:3|max:255');
         CRUD::field('description')->type('textarea')->validationRules('required|min:10');
-        CRUD::field('image_path')->type('upload')->disk('public')->validationRules('required|image|max:2048');
+        CRUD::field('image_path')
+            ->type('upload')
+            ->withFiles()
+            ->disk('public')
+            ->validationRules('required|image|max:2048');
         CRUD::field('features')->type('textarea')->hint('Enter features separated by new lines (one per line)')->validationRules('required|string');
         CRUD::field('icon')->type('text')->hint('Optional: Icon class name (e.g., la la-home)');
         CRUD::field('is_active')->type('boolean')->default(true);
@@ -82,5 +86,28 @@ class ServiceCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $this->crud->hasAccessOrFail('delete');
+
+        // get entry ID from Request (makes sure its the last ID for nested resources)
+        $id = $this->crud->getCurrentEntryId() ?? $id;
+
+        // Get the entry and delete it
+        $entry = $this->crud->getEntry($id);
+        $entry->delete();
+        
+        // Show success message and redirect to list page
+        session()->flash('success', trans('backpack::crud.delete_success'));
+        
+        return redirect($this->crud->route);
     }
 }
