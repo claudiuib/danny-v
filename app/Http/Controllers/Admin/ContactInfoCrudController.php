@@ -27,9 +27,9 @@ class ContactInfoCrudController extends CrudController
         $contactInfo = \App\Models\ContactInfo::first();
         if (!$contactInfo) {
             \App\Models\ContactInfo::create([
-                'phone' => '07481567890',
-                'email' => 'info@dannyv.com',
-                'location' => '123 Craftsman Ave London',
+                'phone' => '07904658959',
+                'email' => 'dannyvcarpentry@gmail.com',
+                'location' => 'London',
                 'description' => 'Ready to start your next project? Fill out the form below and we\'ll get back to you within 24 hours.',
                 'bullet_1' => 'We offer complimentary project consultations to discuss your vision and provide expert recommendations.',
                 'bullet_2' => 'Fully licensed contractors with comprehensive insurance coverage for your peace of mind.',
