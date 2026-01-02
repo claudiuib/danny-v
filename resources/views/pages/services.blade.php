@@ -42,9 +42,13 @@
                                 </div>
                             @endif
                             
-                            <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                            <!-- <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
                                 Contact Us
-                            </button>
+                            </button> -->
+                            <a href="https://wa.me/447904658959?text={{ urlencode('Hi Danny, I am interested in your ' . $service->title . ' service. Could I get more information?') }}" 
+   class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+    Contact Us
+</a>
                         </div>
                         <div class="lg:w-1/2 flex justify-center">
                             @if($service->image_path)
