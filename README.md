@@ -4,7 +4,7 @@ A modern, responsive website for Danny V Carpentry, a London-based carpentry bus
 
 ## 🏗️ About the Business
 
-Founded in 2009 by Danny, Danny V Carpentry has grown from a small workshop passion project into one of London's most trusted carpentry services. The business offers a comprehensive range of carpentry services including:
+ Danny V Carpentry has grown from a small workshop passion project into one of London's most trusted carpentry services. The business offers a comprehensive range of carpentry services including:
 
 - Garden fence installation and repairs
 - New joist installation and existing joist repairs
